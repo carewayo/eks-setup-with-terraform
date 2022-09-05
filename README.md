@@ -29,33 +29,30 @@ $ cd eks-terraform-setup
 # install terraform using a bash shell script
 $ sh terraform-install.sh
 # OR install terraform by running the commands below
-$ wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip
-$ sudo unzip terraform_0.12.26_linux_amd64.zip -d /usr/local/bin/
+$ sudo yum install wget unzip -y
+$ wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip
+$ sudo unzip terraform_1.2.8_linux_amd64.zip -d /usr/local/bin/
 # Export terraform binary path temporally
 $ export PATH=$PATH:/usr/local/bin
 # Add path permanently for current user.By Exporting path in .bashrc file at end of file.
-$ vi .bashrc
-   export PATH="$PATH:/usr/local/bin"
+$ echo "export PATH=$PATH:/usr/local/bin" >> ~/.bashrc
 # Source .bashrc to reflect for current session
 $ source ~/.bashrc  
 # run the scripts https://github.com/mylandmarktechs/eks-terraform-setup/blob/main/terraform-install.sh
 
-$ sudo yum install wget unzip -y
-$ wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip
-$ sudo unzip terraform_0.12.26_linux_amd64.zip -d /usr/local/bin/
-# Export terraform binary path temporally
-$ export PATH=$PATH:/usr/local/bin
-# Add path permanently for current user.By Exporting path in .bashrc file at end of file.
-$ vi .bashrc
-   export PATH="$PATH:/usr/local/bin"
-# Source .bashrc to reflect for current session
-$ source ~/.bashrc  
-# run the scripts https://github.com/mylandmarktechs/eks-terraform-setup/blob/main/terraform-install.sh
-```
 #### Clone terraform scripts
 ``` sh
 $ git clone https://github.com/mylandmarktechs/eks-terraform-setup
 $ cd eks-terraform-setup
+#Install AWSCLI, available from aws website also for latest version
+aws --version
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+#run aws -version again to confirm it was installed
+
+aws --version
+
 ```
 #### <span style="color:orange">Update Your Key Name in variables.tf file before executing terraform script.</span>
 ## Infrastructure As A Code using Terraform
